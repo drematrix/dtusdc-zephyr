@@ -1,0 +1,2 @@
+
+-DCATKIN_DEVEL_PREFIX=/home/nvidia/dtusdc-zephyr/duda_robot/devel -DCMAKE_INSTALL_PREFIX=/home/nvidia/dtusdc-zephyr/duda_robot/install -G Unix Makefiles
