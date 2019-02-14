@@ -8,6 +8,7 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/nvidia/dtusdc-zephyr/duda_robot/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/home/nvidia/dtusdc-zephyr/duda_robot/devel/lib:$LD_LIBRARY_PATH"
 export PWD="/home/nvidia/dtusdc-zephyr/duda_robot/build"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/nvidia/dtusdc-zephyr/duda_robot/devel/share/common-lisp"
 export ROS_PACKAGE_PATH="/home/nvidia/dtusdc-zephyr/duda_robot/src:$ROS_PACKAGE_PATH"

@@ -122,6 +122,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/nvidia/dtusdc-zephyr/duda_robot/build/gtest/cmake_install.cmake")
+  include("/home/nvidia/dtusdc-zephyr/duda_robot/build/duda_description/cmake_install.cmake")
 
 endif()
 
