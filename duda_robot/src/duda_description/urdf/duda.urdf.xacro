@@ -17,7 +17,7 @@
 
      <!-- Front Compartment Dimensions -->
      <xacro:property name="front_comp_length" value="1.6" />
-     <xacro:property name="front_comp_width" value="0.6" />
+     <xacro:property name="front_comp_width" value="5.6" />
      <xacro:property name="front_comp_height" value="0.4" />
 
     <!-- Base link / Middle Compartment -->
