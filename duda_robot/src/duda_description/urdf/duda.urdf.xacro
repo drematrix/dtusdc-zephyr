@@ -1,13 +1,32 @@
 <?xml version="1.0"?>
 <robot name="duda" xmlns:xacro="http://ros.org/wiki/xacro">
-    <xacro:macro name="compartment" params="name length width height">
-        <link name="${name}">
-            <visual>
-                <geometry>
-                    <box size = "${length} ${width} ${height}">
-                </geometry>
-            </visual>
-        </link>
-    </xacro:macro>
-    <xacro:compartment name="base_link" length="2.6" width="0.4" height="0.4" />
+     <!-- Include Materials -->
+     <material name="Black">
+         <color rgba="0.0 0.0 0.0 1.0"/>
+     </material>
+     <material name="Red">
+         <color rgba="0.8 0.0 0.0 1.0"/>
+     </material>
+     <material name="White">
+         <color rgba="1 1 1 1"/>
+     </material>
+     <!-- Middle Compartment Dimensions -->
+     <xacro:property name="middle_comp_length" value="2.6" />
+     <xacro:property name="middle_comp_width" value="0.6" />
+     <xacro:property name="middle_comp_length" value="0.4" />
+
+     <!-- Front Compartment Dimensions -->
+     <xacro:property name="front_comp_length" value="1.6" />
+     <xacro:property name="front_comp_width" value="0.6" />
+     <xacro:property name="front_comp_length" value="0.4" />
+
+    <link name="base_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>    
+            <geometry>
+                <box size="${middle_comp_length} ${middle_comp_width} ${middle_comp_height}"/>
+            </geometry>
+            <material name="Black" />
+        </visual>
+    </link>
 </robot>
