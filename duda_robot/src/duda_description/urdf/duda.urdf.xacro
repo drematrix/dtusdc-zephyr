@@ -13,13 +13,14 @@
      <!-- Middle Compartment Dimensions -->
      <xacro:property name="middle_comp_length" value="2.6" />
      <xacro:property name="middle_comp_width" value="0.6" />
-     <xacro:property name="middle_comp_length" value="0.4" />
+     <xacro:property name="middle_comp_height" value="0.4" />
 
      <!-- Front Compartment Dimensions -->
      <xacro:property name="front_comp_length" value="1.6" />
      <xacro:property name="front_comp_width" value="0.6" />
-     <xacro:property name="front_comp_length" value="0.4" />
+     <xacro:property name="front_comp_height" value="0.4" />
 
+    <!-- Base link / Middle Compartment -->
     <link name="base_link">
         <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>    
@@ -29,4 +30,22 @@
             <material name="Black" />
         </visual>
     </link>
+
+    <!-- Front link / Front Compartment -->
+    <link name="front_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>    
+            <geometry>
+                <box size="${front_comp_length} ${front_comp_width} ${front_comp_height}"/>
+            </geometry>
+            <material name="Black" />
+        </visual>
+    </link>
+
+    <joint name="base_front_joint" type="fixed">
+        <origin xyz="2.6 0 0" rpy="0 0 0" />
+        <parent link="base_link"/>
+        <child link="front_link"/>        
+    </joint>
+
 </robot>
