@@ -12,7 +12,7 @@
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0" />
 				<geometry>
-					<mesh filename="package://duda_description/meshes/wheel.dae" scale="5 5 5"/>
+					<mesh filename="package://duda_description/meshes/wheel.dae" scale="2.5 2.5 2.5"/>
 				</geometry>
 			</visual>
 			<collision>
