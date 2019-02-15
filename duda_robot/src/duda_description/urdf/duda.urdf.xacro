@@ -34,7 +34,7 @@
     <!-- Front link / Front Compartment -->
     <link name="front_link">
         <visual>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>    
+            <origin xyz="0.8 0.0 0.0" rpy="0.0 0.0 0.0"/>    
             <geometry>
                 <box size="${front_comp_length} ${front_comp_width} ${front_comp_height}"/>
             </geometry>
@@ -43,7 +43,7 @@
     </link>
 
     <joint name="base_front_joint" type="fixed">
-        <origin xyz="2.6 0 0" rpy="0 0 0" />
+        <origin xyz="1.3 0 0" rpy="0 0 0" />
         <parent link="base_link"/>
         <child link="front_link"/>        
     </joint>
