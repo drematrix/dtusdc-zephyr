@@ -12,7 +12,7 @@
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0" />
 				<geometry>
-					<mesh filename="package://duda_description/meshes/wheel.dae" scale="2.5 2.5 2.5"/>
+					<mesh filename="package://duda_description/meshes/wheel.dae" scale="0.75 0.75 0.75"/>
 				</geometry>
 			</visual>
 			<collision>
@@ -32,7 +32,7 @@
 		</gazebo>
 
 		<joint name="${wheel_prefix}_wheel" type="continuous">
-			<parent link="base_link"/>
+			<parent link="front_link"/>
 			<child link="${wheel_prefix}_wheel_link"/>
 			<xacro:insert_block name="joint_pose"/>
 			<axis xyz="0 1 0" rpy="0 0 0" />

@@ -2,11 +2,20 @@
 <robot name="duda" xmlns:xacro="http://ros.org/wiki/xacro">
      <!-- Include Materials -->
      <material name="Black">
-         <color rgba="0.0 0.0 0.0 1.0"/>
+         <color rgba="0.0 0.0 0.0 0.6"/>
      </material>
      <material name="Red">
-         <color rgba="0.8 0.0 0.0 1.0"/>
+         <color rgba="0.8 0.0 0.0 0.6"/>
      </material>
+
+    <material name="Yellow">
+         <color rgba="0.8 0.8 0.0 0.6"/>
+     </material>
+
+     <material name="Blue">
+         <color rgba="0.0 0.0 0.4 0.6"/>
+     </material>
+
      <material name="White">
          <color rgba="1 1 1 1"/>
      </material>
@@ -18,15 +27,24 @@
      <xacro:property name="M_PI" value="3.14159"/>
 
      <!-- Middle Compartment Dimensions -->
-     <xacro:property name="middle_comp_length" value="2.6" />
-     <xacro:property name="middle_comp_width" value="0.6" />
-     <xacro:property name="middle_comp_height" value="0.4" />
+     <xacro:property name="middle_comp_length" value="0.480" />
+     <xacro:property name="middle_comp_width" value="0.630" />
+     <xacro:property name="middle_comp_height" value="0.355" />
 
      <!-- Front Compartment Dimensions -->
-     <xacro:property name="front_comp_length" value="1.6" />
-     <xacro:property name="front_comp_width" value="5.6" />
-     <xacro:property name="front_comp_height" value="0.4" />
+     <xacro:property name="front_comp_length" value="0.415" />
+     <xacro:property name="front_comp_width" value="0.520" />
+     <xacro:property name="front_comp_height" value="0.265" />
 
+     <!-- Rear Compartment Dimensions -->
+     <xacro:property name="rear_comp_length" value="0.325" />
+     <xacro:property name="rear_comp_width" value="0.520" />
+     <xacro:property name="rear_comp_height" value="0.265" />
+
+    <!-- LiDAR Dimensions -->
+     <xacro:property name="lidar_depth" value="0.098" />
+     
+        
     <!-- Wheel Mounting Positions -->
     <xacro:property name="wheelbase" value="0.5120" />
     <xacro:property name="track" value="0.645" />
@@ -36,24 +54,88 @@
     <xacro:property name="wheel_length" value="0.1143" />
     <xacro:property name="wheel_radius" value="0.1651" />
 
+    <!-- Map -->
+    <link name="map">
+    </link>
     <!-- Base link / Middle Compartment -->
     <link name="base_link">
-        <visual>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>    
+        <visual>                
             <geometry>
-                <box size="0.480 0.631 0.355"/>
+                <box size="${middle_comp_length} ${middle_comp_width} ${middle_comp_height}"/>
             </geometry>
             <material name="Black" />
         </visual>
     </link>
 
+    <!-- Map to base joint -->
+    <joint name="map_to_base" type="fixed">
+        <parent link="map"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 ${middle_comp_height/2}"/>        
+    </joint>
+
+    <!-- Front link / Front Compartment -->
+    <link name="front_link">
+        <visual>
+            <origin xyz="${front_comp_length/2} 0.0 0.0" rpy="0.0 0.0 0.0"/>    
+            <geometry>
+                <box size="${front_comp_length} ${front_comp_width} ${front_comp_height}"/>
+            </geometry>
+            <material name="Blue" />
+        </visual>
+    </link>
+
+    <!-- Base-Front Join -->
+    <joint name="base_to_front" type="fixed">
+        <parent link="base_link"/>
+        <child link="front_link"/>
+        <origin xyz="${middle_comp_length/2} 0.0 0.0"/>
+    </joint>
+
+    <!-- Rear link / Rear Compartment -->
+    <link name="rear_link">
+        <visual>
+            <origin xyz="${-(rear_comp_length/2)} 0.0 0.0" rpy="0.0 0.0 0.0"/>    
+            <geometry>
+                <box size="${rear_comp_length} ${rear_comp_width} ${rear_comp_height}"/>
+            </geometry>
+            <material name="Yellow" />
+        </visual>
+    </link>
+
+    <!-- Base-Rear Join -->
+    <joint name="base_to_rear" type="fixed">
+        <parent link="base_link"/>
+        <child link="rear_link"/>
+        <origin xyz="${-(middle_comp_length/2)} 0.0 0.0"/>
+    </joint>
+
+    <!-- LiDAR Link -->
+    <link name="lidar_link">
+        <visual>
+            <origin xyz="${lidar_depth/2} 0.0 0.0" rpy="0.0 0.0 ${-radians(90)}"/>    
+            <geometry>
+                <mesh filename="package://duda_description/meshes/lidar.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="Red" />
+        </visual>
+    </link>
+
+    <!-- front-lidar Joint -->
+    <joint name="front_to_lidar" type="fixed">
+        <parent link="front_link"/>
+        <child link="lidar_link"/>
+        <origin xyz="${front_comp_length} 0.0 0.0"/>
+    </joint>
+
+
      <!-- Duda wheel macros -->
     <xacro:duda_wheel wheel_prefix="front_left">
-        <origin xyz="0 ${track/2} 0" rpy="0 0 0" />
+        <origin xyz="${front_comp_length/2} ${track/2} ${-(front_comp_height/2)}" rpy="0 0 0" />
     </xacro:duda_wheel>
 
     <xacro:duda_wheel wheel_prefix="front_right">
-        <origin xyz="0 ${-track/2} 0" rpy="0 0 0" />
+        <origin xyz="${front_comp_length/2} ${-track/2} ${-(front_comp_height/2)}" rpy="0 0 0" />
     </xacro:duda_wheel>
 
 </robot>
