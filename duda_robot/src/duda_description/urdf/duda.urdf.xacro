@@ -26,42 +26,49 @@
      <!-- Constants -->
      <xacro:property name="M_PI" value="3.14159"/>
 
-     <!-- Middle Compartment Dimensions -->
-     <xacro:property name="middle_comp_length" value="0.480" />
-     <xacro:property name="middle_comp_width" value="0.630" />
-     <xacro:property name="middle_comp_height" value="0.355" />
-
-     <!-- Front Compartment Dimensions -->
-     <xacro:property name="front_comp_length" value="0.415" />
-     <xacro:property name="front_comp_width" value="0.520" />
-     <xacro:property name="front_comp_height" value="0.265" />
-
-     <!-- Rear Compartment Dimensions -->
-     <xacro:property name="rear_comp_length" value="0.325" />
-     <xacro:property name="rear_comp_width" value="0.520" />
-     <xacro:property name="rear_comp_height" value="0.265" />
+     <!-- Base_Link Visual Offsets -->
+     <xacro:property name="base_long_offset" value="-0.61" />
+     <xacro:property name="base_lat_offset" value="-0.315" />
+     <xacro:property name="base_ver_offset" value="-0.178" />
+     
+    <!-- Ground Clearance -->
+    <xacro:property name="ground_clearance" value="0.1525" />
 
     <!-- LiDAR Dimensions -->
      <xacro:property name="lidar_depth" value="0.098" />
-     
-        
+     <xacro:property name="lidar_long_offset" value="0.467" />
+     <xacro:property name="lidar_lat_offset" value="0.051" />
+           
     <!-- Wheel Mounting Positions -->
     <xacro:property name="wheelbase" value="0.5120" />
     <xacro:property name="track" value="0.645" />
-    <xacro:property name="wheel_vertical_offset" value="0.03282" /> 
+    <xacro:property name="wheel_vertical_offset" value="0.204" />
+    <xacro:property name="wheel_long_offset" value="0.34"/> 
 
     <!-- Wheel Properties for Collision -->
     <xacro:property name="wheel_length" value="0.1143" />
     <xacro:property name="wheel_radius" value="0.1651" />
 
+    <!-- Castor Mounting Positions -->
+    <xacro:property name="castor_vertical_offset" value="0.246" />
+    <xacro:property name="castor_long_offset" value="0.451"/>
+
+    <!-- Castor Visual Offsets -->
+    <xacro:property name="castor_vertical_offset_v" value="-0.135" />
+    <xacro:property name="castor_lat_offset_v" value="-0.055"/>
+    <xacro:property name="castor_long_offset_v" value="-0.044"/>
+
     <!-- Map -->
     <link name="map">
     </link>
-    <!-- Base link / Middle Compartment -->
+
+    <!-- Base link -->
     <link name="base_link">
-        <visual>                
+        <visual>
+	    <origin xyz = "${base_long_offset} ${base_lat_offset} ${base_ver_offset}" rpy="0 0 0" />                 
             <geometry>
-                <box size="${middle_comp_length} ${middle_comp_width} ${middle_comp_height}"/>
+                <!--box size="${middle_comp_length} ${middle_comp_width} ${middle_comp_height}"/-->
+                <mesh filename="package://duda_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
             </geometry>
             <material name="Black" />
         </visual>
@@ -71,49 +78,13 @@
     <joint name="map_to_base" type="fixed">
         <parent link="map"/>
         <child link="base_link"/>
-        <origin xyz="0 0 ${middle_comp_height/2}"/>        
-    </joint>
-
-    <!-- Front link / Front Compartment -->
-    <link name="front_link">
-        <visual>
-            <origin xyz="${front_comp_length/2} 0.0 0.0" rpy="0.0 0.0 0.0"/>    
-            <geometry>
-                <box size="${front_comp_length} ${front_comp_width} ${front_comp_height}"/>
-            </geometry>
-            <material name="Blue" />
-        </visual>
-    </link>
-
-    <!-- Base-Front Join -->
-    <joint name="base_to_front" type="fixed">
-        <parent link="base_link"/>
-        <child link="front_link"/>
-        <origin xyz="${middle_comp_length/2} 0.0 0.0"/>
-    </joint>
-
-    <!-- Rear link / Rear Compartment -->
-    <link name="rear_link">
-        <visual>
-            <origin xyz="${-(rear_comp_length/2)} 0.0 0.0" rpy="0.0 0.0 0.0"/>    
-            <geometry>
-                <box size="${rear_comp_length} ${rear_comp_width} ${rear_comp_height}"/>
-            </geometry>
-            <material name="Yellow" />
-        </visual>
-    </link>
-
-    <!-- Base-Rear Join -->
-    <joint name="base_to_rear" type="fixed">
-        <parent link="base_link"/>
-        <child link="rear_link"/>
-        <origin xyz="${-(middle_comp_length/2)} 0.0 0.0"/>
+        <origin xyz="0 0 ${(-base_ver_offset+ground_clearance)}"/>        
     </joint>
 
     <!-- LiDAR Link -->
     <link name="lidar_link">
         <visual>
-            <origin xyz="${lidar_depth/2} 0.0 0.0" rpy="0.0 0.0 ${-radians(90)}"/>    
+            <origin xyz="${lidar_depth/2} ${lidar_lat_offset} 0.0" rpy="0.0 0.0 ${-radians(90)}"/>    
             <geometry>
                 <mesh filename="package://duda_description/meshes/lidar.stl" scale="0.001 0.001 0.001"/>
             </geometry>
@@ -121,21 +92,39 @@
         </visual>
     </link>
 
-    <!-- front-lidar Joint -->
-    <joint name="front_to_lidar" type="fixed">
-        <parent link="front_link"/>
+    <!-- base-lidar Joint -->
+    <joint name="base_to_lidar" type="fixed">
+        <parent link="base_link"/>
         <child link="lidar_link"/>
-        <origin xyz="${front_comp_length} 0.0 0.0"/>
+        <origin xyz="${lidar_long_offset} 0.0 0.0"/>
     </joint>
 
+    <!-- Castor Mount Link -->
+    <link name="castor_mount_link">
+        <visual>
+            <origin xyz="${castor_long_offset_v} ${castor_lat_offset_v} ${castor_vertical_offset_v}" rpy="0.0 0.0 0.0"/>    
+            <geometry>
+                <mesh filename="package://duda_description/meshes/castor_mount.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="Yellow" />
+        </visual>
+    </link>
+
+    <!-- base-castor_mount Joint -->
+    <joint name="base_to_castor_mount" type="continuous">
+        <parent link="base_link"/>
+        <child link="castor_mount_link"/>
+        <origin xyz="${-castor_long_offset} 0.0 ${base_ver_offset}"/>
+	<axis xyz="0 0 1" rpy="0 0 0" />
+    </joint>
 
      <!-- Duda wheel macros -->
     <xacro:duda_wheel wheel_prefix="front_left">
-        <origin xyz="${front_comp_length/2} ${track/2} ${-(front_comp_height/2)}" rpy="0 0 0" />
+        <origin xyz="${wheel_long_offset} ${track/2} ${-wheel_vertical_offset}" rpy="0 0 0" />
     </xacro:duda_wheel>
 
     <xacro:duda_wheel wheel_prefix="front_right">
-        <origin xyz="${front_comp_length/2} ${-track/2} ${-(front_comp_height/2)}" rpy="0 0 0" />
+        <origin xyz="${wheel_long_offset} ${-track/2} ${-wheel_vertical_offset}" rpy="0 0 0" />
     </xacro:duda_wheel>
 
 </robot>
