@@ -1,8 +1,0 @@
-prefix=/home/nvidia/dtusdc-zephyr/duda_robot/install
-
-Name: duda_description
-Description: Description of duda_description
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/nvidia/dtusdc-zephyr/duda_robot/install/lib 
-Requires: 
