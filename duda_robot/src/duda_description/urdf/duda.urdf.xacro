@@ -1,49 +1,49 @@
 <?xml version="1.0"?>
 <robot name="duda" xmlns:xacro="http://ros.org/wiki/xacro">
-     <!-- Include Materials -->
-     <material name="Black">
-         <color rgba="0.0 0.0 0.0 0.9"/>
-     </material>
-     <material name="Red">
-         <color rgba="0.8 0.0 0.0 0.9"/>
-     </material>
+    <!-- Include Materials -->
+    <material name="Black">
+        <color rgba="0.0 0.0 0.0 0.9" />
+    </material>
+    <material name="Red">
+        <color rgba="0.8 0.0 0.0 0.9" />
+    </material>
 
     <material name="Yellow">
-         <color rgba="0.8 0.8 0.0 0.9"/>
-     </material>
+        <color rgba="0.8 0.8 0.0 0.9" />
+    </material>
 
-     <material name="Blue">
-         <color rgba="0.0 0.0 0.4 0.9"/>
-     </material>
+    <material name="Blue">
+        <color rgba="0.0 0.0 0.4 0.9" />
+    </material>
 
-     <material name="White">
-         <color rgba="1 1 1 1"/>
-     </material>
+    <material name="White">
+        <color rgba="1 1 1 1" />
+    </material>
 
-     <!--Include URDF/XACRO files -->
-     <xacro:include filename="$(find duda_description)/urdf/wheel.urdf.xacro" />
+    <!--Include URDF/XACRO files -->
+    <xacro:include filename="$(find duda_description)/urdf/wheel.urdf.xacro" />
 
-     <!-- Constants -->
-     <xacro:property name="M_PI" value="3.14159"/>
+    <!-- Constants -->
+    <xacro:property name="M_PI" value="3.14159" />
 
-     <!-- Base_Link Visual Offsets -->
-     <xacro:property name="base_long_offset" value="-0.61" />
-     <xacro:property name="base_lat_offset" value="-0.315" />
-     <xacro:property name="base_ver_offset" value="-0.178" />
+    <!-- Base_Link Visual Offsets -->
+    <xacro:property name="base_long_offset" value="-0.61" />
+    <xacro:property name="base_lat_offset" value="-0.315" />
+    <xacro:property name="base_ver_offset" value="-0.178" />
 
     <!-- Base_Link Properties -->
     <xacro:property name="base_link_mass" value="25" />
     <xacro:property name="base_link_x" value="1.22" />
     <xacro:property name="base_link_y" value="0.633" />
     <xacro:property name="base_link_x" value="0.356" />
-     
+
     <!-- Ground Clearance -->
     <xacro:property name="ground_clearance" value="0.1525" />
 
     <!-- LiDAR Dimensions -->
-     <xacro:property name="lidar_depth" value="0.098" />
-     <xacro:property name="lidar_long_offset" value="0.467" />
-     <xacro:property name="lidar_lat_offset" value="0.051" />
+    <xacro:property name="lidar_depth" value="0.098" />
+    <xacro:property name="lidar_long_offset" value="0.467" />
+    <xacro:property name="lidar_lat_offset" value="0.051" />
 
     <!-- LiDAR properties -->
     <xacro:property name="lidar_mass" value="1.5" />
@@ -63,12 +63,12 @@
     <xacro:property name="imu_y" value="0.276" />
     <xacro:property name="imu_z" value="0.037" />
 
-           
+
     <!-- Wheel Mounting Positions -->
     <xacro:property name="wheelbase" value="0.5120" />
     <xacro:property name="track" value="0.645" />
     <xacro:property name="wheel_vertical_offset" value="0.204" />
-    <xacro:property name="wheel_long_offset" value="0.34"/> 
+    <xacro:property name="wheel_long_offset" value="0.34" />
 
     <!-- Wheel Properties -->
     <xacro:property name="wheel_length" value="0.065" />
@@ -76,7 +76,7 @@
 
     <!-- Castor Mounting Positions -->
     <xacro:property name="castor_vertical_offset" value="0.246" />
-    <xacro:property name="castor_long_offset" value="0.451"/>
+    <xacro:property name="castor_long_offset" value="0.451" />
 
     <!-- Castor Mount Properties -->
     <xacro:property name="castor_mount_mass" value="7" />
@@ -85,71 +85,65 @@
     <xacro:property name="castor_mount_z" value="0.135" />
 
     <!-- Caster Wheel Properties -->
-    <xacro:property name="castor_wheel_mass" value="1">
-    <xacro:property name="castor_wheel_radius" value="0.050">
-    <xacro:property name="castor_wheel_length" value="0.030">
+    <xacro:property name="castor_wheel_mass" value="1" />
+    <xacro:property name="castor_wheel_radius" value="0.050" />
+    <xacro:property name="castor_wheel_length" value="0.030" />
 
     <!-- Castor Visual Offsets -->
     <xacro:property name="castor_vertical_offset_v" value="-0.135" />
-    <xacro:property name="castor_lat_offset_v" value="-0.055"/>
-    <xacro:property name="castor_long_offset_v" value="-0.044"/>
+    <xacro:property name="castor_lat_offset_v" value="-0.055" />
+    <xacro:property name="castor_long_offset_v" value="-0.044" />
 
     <!-- Macro for calculating inertia of cylinder -->
     <xacro:macro name="cylinder_inertia" params="m r h">
-        <inertia  ixx="${m*(3*r*r+h*h)/12}" ixy = "0" ixz = "0"
-                  iyy="${m*(3*r*r+h*h)/12}" iyz = "0"
-                  izz="${m*r*r/2}" />
+        <inertia ixx="${m*(3*r*r+h*h)/12}" ixy="0" ixz="0" iyy="${m*(3*r*r+h*h)/12}" iyz="0" izz="${m*r*r/2}" />
     </xacro:macro>
 
     <!-- Macro for calculating inertia of box -->
     <xacro:macro name="box_inertia" params="m x y z">
-        <inertia  ixx="${m*(y*y+z*z)/12}" ixy = "0" ixz = "0"
-                  iyy="${m*(x*x+z*z)/12}" iyz = "0"
-                  izz="${m*(x*x+z*z)/12}" /> 
+        <inertia ixx="${m*(y*y+z*z)/12}" ixy="0" ixz="0" iyy="${m*(x*x+z*z)/12}" iyz="0" izz="${m*(x*x+z*z)/12}" />
     </xacro:macro>
 
     <!-- Map -->
     <link name="map">
-        <inertial>
-            <mass value="0.0001" />
-            <origin xyz="0 0 0" />
-            <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
-                iyy="0.0001" iyz="0.0" 
-                izz="0.0001" />
-        </inertial>
-    
-        <visual>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <box size="0.001 0.001 0.001" />
-            </geometry>
-        </visual>
+    <inertial>
+        <mass value="0.0001" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
+    </inertial>
+
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <box size="0.001 0.001 0.001" />
+        </geometry>
+    </visual>
     </link>
 
     <!-- Base link -->
     <link name="base_link">
-        <inertial>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-            <mass value="${base_link_mass}"/>
-            <box_inertia m="${base_link_mass}" x="" y="" z=""/>
-        </inertial>
+    <inertial>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+        <mass value="${base_link_mass}" />
+        <box_inertia m="${base_link_mass}" x="" y="" z="" />
+    </inertial>
 
-        <visual>
-	        <origin xyz = "${base_long_offset} ${base_lat_offset} ${base_ver_offset}" rpy="0 0 0" />
+    <visual>
+        <origin xyz="${base_long_offset} ${base_lat_offset} ${base_ver_offset}" rpy="0 0 0" />
 
-            <geometry>
-                <!--box size="${middle_comp_length} ${middle_comp_width} ${middle_comp_height}"/-->
-                <mesh filename="package://duda_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
-            </geometry>
-            <material name="Black" />
-        </visual>
+        <geometry>
+            <!--box size="${middle_comp_length} ${middle_comp_width} ${middle_comp_height}"/-->
+            <mesh filename="package://duda_description/meshes/base_link.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="Black" />
+    </visual>
 
-        <collision>
-            <origin xyz="0 0 0" rpy="0 0 0 " />
-            <geometry>
-                <mesh filename="package://duda_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
-            </geometry>
-        </collision>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0 " />
+        <geometry>
+            <mesh filename="package://duda_description/meshes/base_link.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+    </collision>
     </link>
 
     <gazebo reference="base_link">
@@ -159,68 +153,94 @@
 
     <!-- Map to base joint -->
     <joint name="map_to_base" type="fixed">
-        <parent link="map"/>
-        <child link="base_link"/>
-        <origin xyz="0 0 ${(-base_ver_offset+ground_clearance)}"/>        
+        <parent link="map" />
+        <child link="base_link" />
+        <origin xyz="0 0 ${(-base_ver_offset+ground_clearance)}" />
     </joint>
 
     <!-- LiDAR Link -->
     <link name="lidar_link">
-        <inertial>
-            <mass value="${lidar_mass}" />
-            <origin xyz="0 0 0" />
-            <cylinder_inertia m="${lidar_mass}" r="${}" h="${}" />
-        </inertial>
+    <inertial>
+        <mass value="${lidar_mass}" />
+        <origin xyz="0 0 0" />
+        <cylinder_inertia m="${lidar_mass}" r="${}" h="${}" />
+    </inertial>
 
-        <visual>
-            <origin xyz="${lidar_depth/2} ${lidar_lat_offset} 0.0" rpy="0.0 0.0 ${-radians(90)}"/>    
-            <geometry>
-                <mesh filename="package://duda_description/meshes/lidar.stl" scale="0.001 0.001 0.001"/>
-            </geometry>
-            <material name="Red" />
-        </visual>
+    <visual>
+        <origin xyz="${lidar_depth/2} ${lidar_lat_offset} 0.0" rpy="0.0 0.0 ${-radians(90)}" />
+        <geometry>
+            <mesh filename="package://duda_description/meshes/lidar.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="Red" />
+    </visual>
 
-        <collision>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-	            <mesh filename="package://duda_description/meshes/lidar.stl" scale="0.001 0.001 0.001"/>
-            </geometry>            
-        </collision>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="package://duda_description/meshes/lidar.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+    </collision>
     </link>
 
     <!-- base-lidar Joint -->
     <joint name="base_to_lidar" type="fixed">
-        <parent link="base_link"/>
-        <child link="lidar_link"/>
-        <origin xyz="${lidar_long_offset} 0.0 0.0"/>
+        <parent link="base_link" />
+        <child link="lidar_link" />
+        <origin xyz="${lidar_long_offset} 0.0 0.0" />
     </joint>
-    
+
     <gazebo reference="lidar_link">
+        <material>Gazebo/Blue</material>
         <turnGravityOff>false</turnGravityOff>
+        <sensor type="ray" name="head_hokuyo_sensor">
+            <pose>${hokuyo_size/2} 0 0 0 0 0</pose>
+            <visualize>false</visualize>
+            <update_rate>40</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>720</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-1.570796</min_angle>
+                        <max_angle>1.570796</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.10</min>
+                    <max>10.0</max>
+                    <resolution>0.001</resolution>
+                </range>
+            </ray>
+
+            <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+                <topicName>/scan</topicName>
+                <frameName>lidar_link</frameName>
+            </plugin>
+        </sensor>
     </gazebo>
 
     <!-- Castor Mount Link -->
     <link name="castor_mount_link">
-        <inertial>
-            <mass value="${castor_mount_mass}" />
-            <origin xyz="0 0 0" />
-            <cylinder_inertia m="${}" r="${}" h="${}" />
-        </inertial>
-        
-        <visual>
-            <origin xyz="${castor_long_offset_v} ${castor_lat_offset_v} ${castor_vertical_offset_v}" rpy="0.0 0.0 0.0"/>    
-            <geometry>
-                <mesh filename="package://duda_description/meshes/castor_mount.stl" scale="0.001 0.001 0.001"/>
-            </geometry>
-            <material name="Yellow" />
-        </visual>
+    <inertial>
+        <mass value="${castor_mount_mass}" />
+        <origin xyz="0 0 0" />
+        <cylinder_inertia m="${}" r="${}" h="${}" />
+    </inertial>
 
-        <collision>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-	            <mesh filename="package://duda_description/meshes/castor_mount.stl" scale="0.001 0.001 0.001"/>
-            </geometry>            
-        </collision>        
+    <visual>
+        <origin xyz="${castor_long_offset_v} ${castor_lat_offset_v} ${castor_vertical_offset_v}" rpy="0.0 0.0 0.0" />
+        <geometry>
+            <mesh filename="package://duda_description/meshes/castor_mount.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="Yellow" />
+    </visual>
+
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="package://duda_description/meshes/castor_mount.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+    </collision>
     </link>
 
     <gazebo reference="caster_mount_link">
@@ -229,13 +249,13 @@
 
     <!-- base-castor_mount Joint -->
     <joint name="base_to_castor_mount" type="continuous">
-        <parent link="base_link"/>
-        <child link="castor_mount_link"/>
-        <origin xyz="${-castor_long_offset} 0.0 ${base_ver_offset}"/>
-	<axis xyz="0 0 1" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="castor_mount_link" />
+        <origin xyz="${-castor_long_offset} 0.0 ${base_ver_offset}" />
+        <axis xyz="0 0 1" rpy="0 0 0" />
     </joint>
 
-     <!-- Duda wheel macros -->
+    <!-- Duda wheel macros -->
     <xacro:duda_wheel wheel_prefix="front_left">
         <origin xyz="${wheel_long_offset} ${track/2} ${-wheel_vertical_offset}" rpy="0 0 0" />
     </xacro:duda_wheel>
@@ -263,8 +283,8 @@
             <wheelTorque>30</wheelTorque>
             <wheelAcceleration>1.8</wheelAcceleration>
             <commandTopic>cmd_vel</commandTopic>
-            <odometryFrame>odom</odometryFrame> 
-            <odometryTopic>odom</odometryTopic> 
+            <odometryFrame>odom</odometryFrame>
+            <odometryTopic>odom</odometryTopic>
             <robotBaseFrame>base_footprint</robotBaseFrame>
         </plugin>
     </gazebo>
