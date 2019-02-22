@@ -36,4 +36,13 @@
     <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model duda.urdf -param robot_description" />
 
+    <!-- teleop already has its own built in velocity smoother -->
+    <node pkg="duda_gazebo" type="teleop" name="teleop" output="screen">
+
+        <param name="scale_linear" value="0.5" type="double" />
+        <param name="scale_angular" value="1.5" type="double" />
+        <remap from="duda/cmd_vel" to="/cmd_vel" />
+
+    </node>
+
 </launch>
