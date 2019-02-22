@@ -73,7 +73,7 @@
     <xacro:property name="wheelbase" value="0.5120" />
     <xacro:property name="track" value="0.645" />
     <xacro:property name="wheel_vertical_offset" value="0.204" />
-    <xacro:property name="wheel_long_offset" value="0.34" />
+    <xacro:property name="wheel_long_offset" value="0.37" />
 
     <!-- Wheel Properties -->
     <xacro:property name="wheel_length" value="0.065" />
@@ -403,11 +403,10 @@
             <wheelDiameter>${2*wheel_radius}</wheelDiameter>
             <broadcastTF>1</broadcastTF>
             <wheelTorque>30</wheelTorque>
-            <wheelAcceleration>1.8</wheelAcceleration>
             <commandTopic>cmd_vel</commandTopic>
             <odometryFrame>odom</odometryFrame>
             <odometryTopic>odom</odometryTopic>
-            <robotBaseFrame>base_footprint</robotBaseFrame>
+            <robotBaseFrame>map</robotBaseFrame>
         </plugin>
     </gazebo>
 
