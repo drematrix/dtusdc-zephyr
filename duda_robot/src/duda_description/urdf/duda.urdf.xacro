@@ -1,5 +1,9 @@
 <?xml version="1.0"?>
 <robot name="duda" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <!-- Set the inertial origin and pose of lidar in gazebo plugin -->
+    <!-- Set joint origin for castor wheel -->
+
     <!-- Include Materials -->
     <material name="Black">
         <color rgba="0.0 0.0 0.0 0.9" />
@@ -35,7 +39,7 @@
     <xacro:property name="base_link_mass" value="25" />
     <xacro:property name="base_link_x" value="1.22" />
     <xacro:property name="base_link_y" value="0.633" />
-    <xacro:property name="base_link_x" value="0.356" />
+    <xacro:property name="base_link_z" value="0.356" />
 
     <!-- Ground Clearance -->
     <xacro:property name="ground_clearance" value="0.1525" />
@@ -125,21 +129,19 @@
     <inertial>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
         <mass value="${base_link_mass}" />
-        <box_inertia m="${base_link_mass}" x="" y="" z="" />
+        <box_inertia m="${base_link_mass}" x="${base_link_x}" y="${base_link_y}" z="${base_link_z}" />
     </inertial>
 
     <visual>
         <origin xyz="${base_long_offset} ${base_lat_offset} ${base_ver_offset}" rpy="0 0 0" />
-
         <geometry>
-            <!--box size="${middle_comp_length} ${middle_comp_width} ${middle_comp_height}"/-->
             <mesh filename="package://duda_description/meshes/base_link.stl" scale="0.001 0.001 0.001" />
         </geometry>
         <material name="Black" />
     </visual>
 
     <collision>
-        <origin xyz="0 0 0" rpy="0 0 0 " />
+        <origin xyz="${base_long_offset} ${base_lat_offset} ${base_ver_offset}" rpy="0 0 0 " />
         <geometry>
             <mesh filename="package://duda_description/meshes/base_link.stl" scale="0.001 0.001 0.001" />
         </geometry>
@@ -163,7 +165,7 @@
     <inertial>
         <mass value="${lidar_mass}" />
         <origin xyz="0 0 0" />
-        <cylinder_inertia m="${lidar_mass}" r="${}" h="${}" />
+        <box_inertia m="${lidar_mass}" x="${lidar_x}" y="${lidar_y}" z="${lidar_z}" />
     </inertial>
 
     <visual>
@@ -175,7 +177,7 @@
     </visual>
 
     <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="${lidar_depth/2} ${lidar_lat_offset} 0.0" rpy="0.0 0.0 ${-radians(90)}" />
         <geometry>
             <mesh filename="package://duda_description/meshes/lidar.stl" scale="0.001 0.001 0.001" />
         </geometry>
@@ -224,7 +226,7 @@
     <inertial>
         <mass value="${castor_mount_mass}" />
         <origin xyz="0 0 0" />
-        <cylinder_inertia m="${}" r="${}" h="${}" />
+        <box_inertia m="${castor_mount_mass}" x="${castor_mount_x}" y="${castor_mount_y}" z="${castor_mount_z}" />
     </inertial>
 
     <visual>
@@ -236,7 +238,7 @@
     </visual>
 
     <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="${castor_long_offset_v} ${castor_lat_offset_v} ${castor_vertical_offset_v}" rpy="0 0 0" />
         <geometry>
             <mesh filename="package://duda_description/meshes/castor_mount.stl" scale="0.001 0.001 0.001" />
         </geometry>
@@ -253,6 +255,36 @@
         <child link="castor_mount_link" />
         <origin xyz="${-castor_long_offset} 0.0 ${base_ver_offset}" />
         <axis xyz="0 0 1" rpy="0 0 0" />
+    </joint>
+
+    <link name="castor_wheel_link">
+    <inertial>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+        <mass value="${caster_wheel_mass}" />
+        <cylinder_inertia m="${caster_wheel_mass}" r="${castor_wheel_radius}" h="${castor_wheel_length}" />
+    </inertial>
+
+    <visual>
+        <origin xyz="${castor_long_offset_v} ${castor_lat_offset_v} ${castor_vertical_offset_v}" rpy="0.0 0.0 0.0" />
+        <geometry>
+            <cylinder length="${castor_wheel_length}" radius="${castor_wheel_radius}" />
+        </geometry>
+        <material name="Yellow" />
+    </visual>
+
+    <collision>
+        <origin xyz="0 0 0" rpy="${M_PI/2} 0 0" />
+        <geometry>
+            <cylinder length="${castor_wheel_length}" radius="${castor_wheel_radius}" />
+        </geometry>
+    </collision>
+    </link>
+
+    <joint name="castor_mount_to_castor_wheel" type="continuous">
+        <parent link="castor_mount_link" />
+        <child link="castor_wheel_link" />
+        <origin xyz="${-castor_long_offset} 0.0 ${base_ver_offset}" />
+        <axis xyz="0 1 0" rpy="0 0 0" />
     </joint>
 
     <!-- Duda wheel macros -->
