@@ -101,12 +101,15 @@
     <xacro:property name="castor_long_offset_v" value="-0.044" />
 
     <!-- Camera Mast Properties -->
-	<xacro:property name="camera_mast_vertical_mass" value="0.8" />
-	<xacro:property name="camera_mast_horizontal_mass" value="0.4" />
-	<xacro:property name="camera_mast_cross_section_size" value="0.02" />
-	<xacro:property name="camera_mast_long_offset" value="0.24" />
+    <xacro:property name="camera_mast_vertical_mass" value="0.8" />
+    <xacro:property name="camera_mast_horizontal_mass" value="0.4" />
+    <xacro:property name="camera_mast_cross_section_size" value="0.02" />
+    <xacro:property name="camera_mast_long_offset" value="0.24" />
     <xacro:property name="camera_mast_height" value="0.6" />
     <xacro:property name="camera_mast_separation" value="0.6" />
+
+    <!-- Camera Properties -->
+    <xacro:property name="camera_size" value="0.05" />
 
     <!-- Macro for calculating inertia of cylinder -->
     <xacro:macro name="cylinder_inertia" params="m r h">
@@ -185,7 +188,7 @@
         </geometry>
         <material name="Red" />
     </visual>
-   
+
     </link>
 
     <!-- base-lidar Joint -->
@@ -217,7 +220,7 @@
                     <resolution>0.001</resolution>
                 </range>
             </ray>
-                                
+
             <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
                 <topicName>/scan</topicName>
                 <frameName>lidar_link</frameName>
@@ -262,7 +265,7 @@
         <axis xyz="0 0 1" rpy="0 0 0" />
     </joint>
 
-	<!-- Castor Wheel Link -->
+    <!-- Castor Wheel Link -->
     <link name="castor_wheel_link">
     <inertial>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
@@ -300,6 +303,37 @@
 
     <!-- Camera mast macros -->
     <xacro:camera_mast height="${camera_mast_height}" separation="${camera_mast_separation}" />
+
+    <!-- Camera Link -->
+    <link name="camera_link">
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <box size="${camera_size} ${camera_size} ${camera_size}" />
+        </geometry>
+    </collision>
+
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <box size="${camera_size} ${camera_size} ${camera_size}" />
+        </geometry>
+        <material name="Black" />
+    </visual>
+
+    <joint name="camera_mast_to_camera" type="fixed">
+        <axis xyz="0 1 0" />
+        <origin xyz="${camera_mast_cross_section_size/2} 0 0" rpy="0 0 0"/>
+        <parent link="camera_mast_horizontal_link"/>
+        <child link="camera_link"/>
+    </joint>
+
+    <inertial>
+        <mass value="1e-5" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+    </link>
 
     <!-- Duda wheel macros -->
     <xacro:duda_wheel wheel_prefix="front_left">
