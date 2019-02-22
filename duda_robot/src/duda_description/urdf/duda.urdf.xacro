@@ -321,19 +321,20 @@
         <material name="Black" />
     </visual>
 
-    <joint name="camera_mast_to_camera" type="fixed">
-        <axis xyz="0 1 0" />
-        <origin xyz="${camera_mast_cross_section_size/2} 0 0" rpy="0 0 0"/>
-        <parent link="camera_mast_horizontal_link"/>
-        <child link="camera_link"/>
-    </joint>
-
     <inertial>
         <mass value="1e-5" />
         <origin xyz="0 0 0" rpy="0 0 0" />
         <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
     </inertial>
     </link>
+
+    <!-- Camera mast to Camera Joint -->
+    <joint name="camera_mast_to_camera" type="fixed">
+        <axis xyz="0 1 0" />
+        <origin xyz="${camera_mast_cross_section_size/2} 0 0" rpy="0 0 0" />
+        <parent link="camera_mast_horizontal_link" />
+        <child link="camera_link" />
+    </joint>
 
     <!-- Duda wheel macros -->
     <xacro:duda_wheel wheel_prefix="front_left">
