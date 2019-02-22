@@ -1,0 +1,8 @@
+prefix=/home/divye/dtusdc-zephyr/duda_robot/devel
+
+Name: duda_gazebo
+Description: Description of duda_gazebo
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/divye/dtusdc-zephyr/duda_robot/devel/lib 
+Requires: 

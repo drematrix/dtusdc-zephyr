@@ -1,8 +1,8 @@
-# Install script for directory: /home/nvidia/dtusdc-zephyr/duda_robot/src/duda_description
+# Install script for directory: /home/divye/dtusdc-zephyr/duda_robot/src/duda_description
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/nvidia/dtusdc-zephyr/duda_robot/install")
+  set(CMAKE_INSTALL_PREFIX "/home/divye/dtusdc-zephyr/duda_robot/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nvidia/dtusdc-zephyr/duda_robot/build/duda_description/catkin_generated/installspace/duda_description.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/divye/dtusdc-zephyr/duda_robot/build/duda_description/catkin_generated/installspace/duda_description.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/duda_description/cmake" TYPE FILE FILES
-    "/home/nvidia/dtusdc-zephyr/duda_robot/build/duda_description/catkin_generated/installspace/duda_descriptionConfig.cmake"
-    "/home/nvidia/dtusdc-zephyr/duda_robot/build/duda_description/catkin_generated/installspace/duda_descriptionConfig-version.cmake"
+    "/home/divye/dtusdc-zephyr/duda_robot/build/duda_description/catkin_generated/installspace/duda_descriptionConfig.cmake"
+    "/home/divye/dtusdc-zephyr/duda_robot/build/duda_description/catkin_generated/installspace/duda_descriptionConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/duda_description" TYPE FILE FILES "/home/nvidia/dtusdc-zephyr/duda_robot/src/duda_description/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/duda_description" TYPE FILE FILES "/home/divye/dtusdc-zephyr/duda_robot/src/duda_description/package.xml")
 endif()
 

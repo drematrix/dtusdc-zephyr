@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nvidia/dtusdc-zephyr/duda_robot/src
+CMAKE_SOURCE_DIR = /home/divye/dtusdc-zephyr/duda_robot/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nvidia/dtusdc-zephyr/duda_robot/build
+CMAKE_BINARY_DIR = /home/divye/dtusdc-zephyr/duda_robot/build
 
 # Utility rule file for tests.
 
@@ -67,6 +67,6 @@ CMakeFiles/tests.dir/clean:
 .PHONY : CMakeFiles/tests.dir/clean
 
 CMakeFiles/tests.dir/depend:
-	cd /home/nvidia/dtusdc-zephyr/duda_robot/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nvidia/dtusdc-zephyr/duda_robot/src /home/nvidia/dtusdc-zephyr/duda_robot/src /home/nvidia/dtusdc-zephyr/duda_robot/build /home/nvidia/dtusdc-zephyr/duda_robot/build /home/nvidia/dtusdc-zephyr/duda_robot/build/CMakeFiles/tests.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/divye/dtusdc-zephyr/duda_robot/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/divye/dtusdc-zephyr/duda_robot/src /home/divye/dtusdc-zephyr/duda_robot/src /home/divye/dtusdc-zephyr/duda_robot/build /home/divye/dtusdc-zephyr/duda_robot/build /home/divye/dtusdc-zephyr/duda_robot/build/CMakeFiles/tests.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/tests.dir/depend
 

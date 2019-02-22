@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nvidia/dtusdc-zephyr/duda_robot/src
+CMAKE_SOURCE_DIR = /home/divye/dtusdc-zephyr/duda_robot/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nvidia/dtusdc-zephyr/duda_robot/build
+CMAKE_BINARY_DIR = /home/divye/dtusdc-zephyr/duda_robot/build
 
 # Utility rule file for sensor_msgs_generate_messages_cpp.
 
@@ -63,10 +63,10 @@ duda_description/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build: sensor_
 .PHONY : duda_description/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
 
 duda_description/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean:
-	cd /home/nvidia/dtusdc-zephyr/duda_robot/build/duda_description && $(CMAKE_COMMAND) -P CMakeFiles/sensor_msgs_generate_messages_cpp.dir/cmake_clean.cmake
+	cd /home/divye/dtusdc-zephyr/duda_robot/build/duda_description && $(CMAKE_COMMAND) -P CMakeFiles/sensor_msgs_generate_messages_cpp.dir/cmake_clean.cmake
 .PHONY : duda_description/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
 
 duda_description/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/depend:
-	cd /home/nvidia/dtusdc-zephyr/duda_robot/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nvidia/dtusdc-zephyr/duda_robot/src /home/nvidia/dtusdc-zephyr/duda_robot/src/duda_description /home/nvidia/dtusdc-zephyr/duda_robot/build /home/nvidia/dtusdc-zephyr/duda_robot/build/duda_description /home/nvidia/dtusdc-zephyr/duda_robot/build/duda_description/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/divye/dtusdc-zephyr/duda_robot/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/divye/dtusdc-zephyr/duda_robot/src /home/divye/dtusdc-zephyr/duda_robot/src/duda_description /home/divye/dtusdc-zephyr/duda_robot/build /home/divye/dtusdc-zephyr/duda_robot/build/duda_description /home/divye/dtusdc-zephyr/duda_robot/build/duda_description/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : duda_description/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/depend
 

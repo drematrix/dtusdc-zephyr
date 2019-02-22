@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nvidia/dtusdc-zephyr/duda_robot/src
+CMAKE_SOURCE_DIR = /home/divye/dtusdc-zephyr/duda_robot/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nvidia/dtusdc-zephyr/duda_robot/build
+CMAKE_BINARY_DIR = /home/divye/dtusdc-zephyr/duda_robot/build
 
 # Utility rule file for map_msgs_generate_messages_lisp.
 
@@ -63,10 +63,10 @@ duda_description/CMakeFiles/map_msgs_generate_messages_lisp.dir/build: map_msgs_
 .PHONY : duda_description/CMakeFiles/map_msgs_generate_messages_lisp.dir/build
 
 duda_description/CMakeFiles/map_msgs_generate_messages_lisp.dir/clean:
-	cd /home/nvidia/dtusdc-zephyr/duda_robot/build/duda_description && $(CMAKE_COMMAND) -P CMakeFiles/map_msgs_generate_messages_lisp.dir/cmake_clean.cmake
+	cd /home/divye/dtusdc-zephyr/duda_robot/build/duda_description && $(CMAKE_COMMAND) -P CMakeFiles/map_msgs_generate_messages_lisp.dir/cmake_clean.cmake
 .PHONY : duda_description/CMakeFiles/map_msgs_generate_messages_lisp.dir/clean
 
 duda_description/CMakeFiles/map_msgs_generate_messages_lisp.dir/depend:
-	cd /home/nvidia/dtusdc-zephyr/duda_robot/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nvidia/dtusdc-zephyr/duda_robot/src /home/nvidia/dtusdc-zephyr/duda_robot/src/duda_description /home/nvidia/dtusdc-zephyr/duda_robot/build /home/nvidia/dtusdc-zephyr/duda_robot/build/duda_description /home/nvidia/dtusdc-zephyr/duda_robot/build/duda_description/CMakeFiles/map_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/divye/dtusdc-zephyr/duda_robot/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/divye/dtusdc-zephyr/duda_robot/src /home/divye/dtusdc-zephyr/duda_robot/src/duda_description /home/divye/dtusdc-zephyr/duda_robot/build /home/divye/dtusdc-zephyr/duda_robot/build/duda_description /home/divye/dtusdc-zephyr/duda_robot/build/duda_description/CMakeFiles/map_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : duda_description/CMakeFiles/map_msgs_generate_messages_lisp.dir/depend
 

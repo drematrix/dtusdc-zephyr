@@ -92,6 +92,7 @@
     <xacro:property name="castor_wheel_mass" value="1" />
     <xacro:property name="castor_wheel_radius" value="0.050" />
     <xacro:property name="castor_wheel_length" value="0.030" />
+    <xacro:property name="castor_wheel_vertical_offset" value="0.1" />
 
     <!-- Castor Visual Offsets -->
     <xacro:property name="castor_vertical_offset_v" value="-0.135" />
@@ -176,12 +177,7 @@
         <material name="Red" />
     </visual>
 
-    <collision>
-        <origin xyz="${lidar_depth/2} ${lidar_lat_offset} 0.0" rpy="0.0 0.0 ${-radians(90)}" />
-        <geometry>
-            <mesh filename="package://duda_description/meshes/lidar.stl" scale="0.001 0.001 0.001" />
-        </geometry>
-    </collision>
+   
     </link>
 
     <!-- base-lidar Joint -->
@@ -192,28 +188,28 @@
     </joint>
 
     <gazebo reference="lidar_link">
-        <material>Gazebo/Blue</material>
+        <material>Gazebo/Gray</material>
         <turnGravityOff>false</turnGravityOff>
         <sensor type="ray" name="head_hokuyo_sensor">
-            <pose>${hokuyo_size/2} 0 0 0 0 0</pose>
-            <visualize>false</visualize>
+            <pose>0 0 0 0 0 0</pose>
+            <visualize>true</visualize>
             <update_rate>40</update_rate>
             <ray>
                 <scan>
                     <horizontal>
-                        <samples>720</samples>
-                        <resolution>1</resolution>
-                        <min_angle>-1.570796</min_angle>
-                        <max_angle>1.570796</max_angle>
+                        <samples>1080</samples>
+                        <resolution>0.25</resolution>
+                        <min_angle>${-radians(60)}</min_angle>
+                        <max_angle>${radians(60)}</max_angle>
                     </horizontal>
                 </scan>
                 <range>
                     <min>0.10</min>
-                    <max>10.0</max>
+                    <max>30.0</max>
                     <resolution>0.001</resolution>
                 </range>
             </ray>
-
+                                
             <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
                 <topicName>/scan</topicName>
                 <frameName>lidar_link</frameName>
@@ -245,7 +241,8 @@
     </collision>
     </link>
 
-    <gazebo reference="caster_mount_link">
+    <gazebo reference="castor_mount_link">
+        <material>Gazebo/Black</material>
         <turnGravityOff>false</turnGravityOff>
     </gazebo>
 
@@ -257,15 +254,16 @@
         <axis xyz="0 0 1" rpy="0 0 0" />
     </joint>
 
+	<!-- Castor Wheel Link -->
     <link name="castor_wheel_link">
     <inertial>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
-        <mass value="${caster_wheel_mass}" />
-        <cylinder_inertia m="${caster_wheel_mass}" r="${castor_wheel_radius}" h="${castor_wheel_length}" />
+        <mass value="${castor_wheel_mass}" />
+        <cylinder_inertia m="${castor_wheel_mass}" r="${castor_wheel_radius}" h="${castor_wheel_length}" />
     </inertial>
 
     <visual>
-        <origin xyz="${castor_long_offset_v} ${castor_lat_offset_v} ${castor_vertical_offset_v}" rpy="0.0 0.0 0.0" />
+        <origin xyz="0 0 0" rpy="${radians(90)} 0.0 0.0" />
         <geometry>
             <cylinder length="${castor_wheel_length}" radius="${castor_wheel_radius}" />
         </geometry>
@@ -283,9 +281,14 @@
     <joint name="castor_mount_to_castor_wheel" type="continuous">
         <parent link="castor_mount_link" />
         <child link="castor_wheel_link" />
-        <origin xyz="${-castor_long_offset} 0.0 ${base_ver_offset}" />
+        <origin xyz="0.0 0.0 ${-castor_wheel_vertical_offset}" />
         <axis xyz="0 1 0" rpy="0 0 0" />
     </joint>
+
+    <gazebo reference="castor_wheel_link">
+        <material>Gazebo/Black</material>
+        <turnGravityOff>false</turnGravityOff>
+    </gazebo>
 
     <!-- Duda wheel macros -->
     <xacro:duda_wheel wheel_prefix="front_left">
@@ -309,7 +312,7 @@
             <updateRate>100.0</updateRate>
             <leftJoint>front_left_wheel_joint</leftJoint>
             <rightJoint>front_right_wheel_joint</rightJoint>
-            <wheelSeparation>${2*base_radius}</wheelSeparation>
+            <wheelSeparation>${track}</wheelSeparation>
             <wheelDiameter>${2*wheel_radius}</wheelDiameter>
             <broadcastTF>1</broadcastTF>
             <wheelTorque>30</wheelTorque>

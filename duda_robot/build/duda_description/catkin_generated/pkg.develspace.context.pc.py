@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "duda_description"
-PROJECT_SPACE_DIR = "/home/nvidia/dtusdc-zephyr/duda_robot/devel"
+PROJECT_SPACE_DIR = "/home/divye/dtusdc-zephyr/duda_robot/devel"
 PROJECT_VERSION = "0.0.0"
