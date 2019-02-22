@@ -105,8 +105,8 @@
 	<xacro:property name="camera_mast_horizontal_mass" value="0.4" />
 	<xacro:property name="camera_mast_cross_section_size" value="0.02" />
 	<xacro:property name="camera_mast_long_offset" value="0.24" />
-    <xacro:property name="camera_mast_height" value="0.100" />
-    <xacro:property name="camera_mast_separation" value="0.04" />
+    <xacro:property name="camera_mast_height" value="0.6" />
+    <xacro:property name="camera_mast_separation" value="0.6" />
 
     <!-- Macro for calculating inertia of cylinder -->
     <xacro:macro name="cylinder_inertia" params="m r h">

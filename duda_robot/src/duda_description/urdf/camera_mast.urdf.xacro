@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
  
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="duda_wheel">
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="camera_mast">
 
 
 	<!-- Macro Definition -->
 	<xacro:macro name="camera_mast" params="height separation">
-		<link name="${camera_mast_vertical_link">
+		<link name="camera_mast_vertical_link">
 			<inertial>
-				<mass value="camera_mast_vertical_mass" />
+				<mass value="${camera_mast_vertical_mass}" />
 				<origin xyz="0 0 ${height/2}" />
-				<box_inertia m="${castor_mast__vertical_mass}" x="${castor_mast_cross_section_size}" y="${castor_mast_cross_section_size}" z="${height}" />
+				<box_inertia m="${camera_mast_vertical_mass}" x="${camera_mast_cross_section_size}" y="${camera_mast_cross_section_size}" z="${height}" />
 			</inertial>
 			<visual>
-				<origin xyz="0 0 0" rpy="0 0 0" />
+				<origin xyz="0 0 ${height/2}" rpy="0 0 0" />
 				<geometry>
 					<box size="${camera_mast_cross_section_size} ${camera_mast_cross_section_size} ${height}"/>
 				</geometry>
@@ -33,14 +33,14 @@
 		<joint name="base_to_camera_mast" type="fixed">
 			<parent link="base_link"/>
 			<child link="camera_mast_vertical_link"/>
-			<origin xyz="${-camera_mast_long_offset} 0 ${base_link_z/2}">
+			<origin xyz="${-camera_mast_long_offset} 0 ${base_link_z/2}" />
 		</joint>
 
-		<link name="${camera_mast_horizontal_link">
+		<link name="camera_mast_horizontal_link">
 			<inertial>
-				<mass value="camera_mast_horizontal_mass" />
+				<mass value="${camera_mast_horizontal_mass}" />
 				<origin xyz="0 0 0" />
-				<box_inertia m="${castor_mast_horizontal_mass}" x="${camera_mast_cross_section_size}" y="${separation}" z="${camera_mast_cross_section_size}" />
+				<box_inertia m="${camera_mast_horizontal_mass}" x="${camera_mast_cross_section_size}" y="${separation}" z="${camera_mast_cross_section_size}" />
 			</inertial>
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0" />
