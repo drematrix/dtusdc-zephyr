@@ -1,0 +1,8 @@
+prefix=/home/divye/dtusdc-zephyr/duda_robot/devel
+
+Name: robot_pose_publisher
+Description: Description of robot_pose_publisher
+Version: 0.2.4
+Cflags: 
+Libs: -L/home/divye/dtusdc-zephyr/duda_robot/devel/lib 
+Requires: 

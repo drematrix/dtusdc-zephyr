@@ -1,2 +1,2 @@
-duda_description:duda_gazebo
+duda_description:duda_gazebo:robot_pose_publisher
 -DCATKIN_DEVEL_PREFIX=/home/divye/dtusdc-zephyr/duda_robot/devel -DCMAKE_INSTALL_PREFIX=/home/divye/dtusdc-zephyr/duda_robot/install -G Unix Makefiles

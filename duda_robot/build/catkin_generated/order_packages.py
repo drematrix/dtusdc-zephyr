@@ -2,4 +2,4 @@
 source_root_dir = "/home/divye/dtusdc-zephyr/duda_robot/src"
 whitelisted_packages = "".split(';') if "" != "" else []
 blacklisted_packages = "".split(';') if "" != "" else []
-underlay_workspaces = "/opt/ros/melodic".split(';') if "/opt/ros/melodic" != "" else []
+underlay_workspaces = "/home/divye/dtusdc-zephyr/duda_robot/devel;/opt/ros/melodic".split(';') if "/home/divye/dtusdc-zephyr/duda_robot/devel;/opt/ros/melodic" != "" else []

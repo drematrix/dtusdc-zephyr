@@ -7,7 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/divye/dtusdc-zephyr/duda_robot/devel:$CMAKE_PREFIX_PATH"
 export PWD="/home/divye/dtusdc-zephyr/duda_robot/build"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/divye/dtusdc-zephyr/duda_robot/devel/share/common-lisp"
-export ROS_PACKAGE_PATH="/home/divye/dtusdc-zephyr/duda_robot/src:$ROS_PACKAGE_PATH"

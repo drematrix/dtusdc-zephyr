@@ -104,7 +104,7 @@
     <xacro:property name="castor_wheel_mass" value="1" />
     <xacro:property name="castor_wheel_radius" value="0.050" />
     <xacro:property name="castor_wheel_length" value="0.030" />
-    <xacro:property name="castor_wheel_vertical_offset" value="0.12" />
+    <xacro:property name="castor_wheel_vertical_offset" value="0.11" />
 
     <!-- Castor Visual Offsets -->
     <xacro:property name="castor_vertical_offset_v" value="-0.135" />
@@ -177,12 +177,12 @@
         <turnGravityOff>false</turnGravityOff>
     </gazebo>
 
-    <!-- Map to base joint -->
+    <!-- Map to base joint >
     <joint name="map_to_base" type="fixed">
         <parent link="map" />
         <child link="base_link" />
         <origin xyz="0 0 ${(-base_ver_offset+ground_clearance)}" />
-    </joint>
+    </joint-->
 
     <!-- LiDAR Link -->
     <link name="lidar_link">
