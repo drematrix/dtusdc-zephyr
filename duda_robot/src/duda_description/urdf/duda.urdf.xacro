@@ -177,12 +177,12 @@
         <turnGravityOff>false</turnGravityOff>
     </gazebo>
 
-    <!-- Map to base joint >
+    <!-- Map to base joint -->
     <joint name="map_to_base" type="fixed">
         <parent link="map" />
         <child link="base_link" />
         <origin xyz="0 0 ${(-base_ver_offset+ground_clearance)}" />
-    </joint-->
+    </joint>
 
     <!-- LiDAR Link -->
     <link name="lidar_link">
@@ -345,7 +345,7 @@
     </gazebo>
 
     <!-- base-castor_mount Joint -->
-    <joint name="base_to_castor_mount" type="continuous">
+    <joint name="base_to_castor_mount" type="fixed">
         <parent link="base_link" />
         <child link="castor_mount_link" />
         <origin xyz="${-castor_long_offset} 0.0 ${base_ver_offset}" />
@@ -473,7 +473,7 @@
         <origin xyz="${wheel_long_offset} ${-track/2} ${-wheel_vertical_offset}" rpy="0 0 0" />
     </xacro:duda_wheel>
 
-    <!-- Differential drive controller Gazebo Plugin >
+    <!-- Differential drive controller Gazebo Plugin -->
     <gazebo>
         <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
             <legacyMode>true</legacyMode>
@@ -484,18 +484,18 @@
             <publishWheelJointState>false</publishWheelJointState>
             <alwaysOn>true</alwaysOn>
             <updateRate>100.0</updateRate>
-            <leftJoint>front_left_wheel_joint</leftJoint>
-            <rightJoint>front_right_wheel_joint</rightJoint>
+            <leftJoint>front_left_wheel</leftJoint>
+            <rightJoint>front_right_wheel</rightJoint>
             <wheelSeparation>${track}</wheelSeparation>
             <wheelDiameter>${2*wheel_radius}</wheelDiameter>
             <wheelAcceleration>1.8</wheelAcceleration>
             <broadcastTF>1</broadcastTF>
-            <wheelTorque>30</wheelTorque>
+            <wheelTorque>180</wheelTorque>
             <commandTopic>cmd_vel</commandTopic>
             <odometryFrame>odom</odometryFrame>
             <odometryTopic>odom</odometryTopic>
             <robotBaseFrame>map</robotBaseFrame>
         </plugin>
-    </gazebo -->
+    </gazebo>
 
 </robot>
