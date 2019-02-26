@@ -21,7 +21,7 @@ volatile bool RightEncoderBSet;
 void setup()
 {
 	  //Init Serial port with 115200 buad rate
-  	Serial.begin(115200);  
+ 	Serial.begin(115200);  
 	SetupEncoders();
 }
 
@@ -50,7 +50,7 @@ void loop()
 
 void Update_Encoders()
 {
-   Serial.print("e");
+  Serial.print("e");
   Serial.print("\t");
   Serial.print(Left_Encoder_Ticks);
   Serial.print("\t");
@@ -60,12 +60,12 @@ void Update_Encoders()
 
  void do_Left_Encoder()
 {
-   LeftEncoderBSet = digitalRead(Left_Encoder_PinB);   // read the input pin
+  LeftEncoderBSet = digitalRead(Left_Encoder_PinB);   // read the input pin
   Left_Encoder_Ticks += LeftEncoderBSet ? -1 : +1;
    
 }
 void do_Right_Encoder()
 {
-   RightEncoderBSet = digitalRead(Right_Encoder_PinB);   // read the input pin
+  RightEncoderBSet = digitalRead(Right_Encoder_PinB);   // read the input pin
   Right_Encoder_Ticks += RightEncoderBSet ? -1 : +1;
  }
