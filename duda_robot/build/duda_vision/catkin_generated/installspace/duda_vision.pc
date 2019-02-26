@@ -1,0 +1,8 @@
+prefix=/home/divye/dtusdc-zephyr/duda_robot/install
+
+Name: duda_vision
+Description: Description of duda_vision
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/divye/dtusdc-zephyr/duda_robot/install/lib 
+Requires: 

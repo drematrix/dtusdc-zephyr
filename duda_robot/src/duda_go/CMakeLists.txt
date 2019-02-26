@@ -13,7 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   rosserial_python
-  std_mgs
+  std_msgs
   tf
 )
 

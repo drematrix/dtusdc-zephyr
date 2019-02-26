@@ -326,6 +326,9 @@ controller_manager_msgs_DIR:PATH=/opt/ros/melodic/share/controller_manager_msgs/
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/melodic/share/cpp_common/cmake
 
+//The directory containing a CMake configuration file for cv_bridge.
+cv_bridge_DIR:PATH=/opt/ros/melodic/share/cv_bridge/cmake
+
 //Value Computed by CMake
 duda_description_BINARY_DIR:STATIC=/home/divye/dtusdc-zephyr/duda_robot/build/duda_description
 
@@ -340,6 +343,18 @@ duda_gazebo_BINARY_DIR:STATIC=/home/divye/dtusdc-zephyr/duda_robot/build/duda_ga
 
 //Value Computed by CMake
 duda_gazebo_SOURCE_DIR:STATIC=/home/divye/dtusdc-zephyr/duda_robot/src/duda_gazebo
+
+//Value Computed by CMake
+duda_go_BINARY_DIR:STATIC=/home/divye/dtusdc-zephyr/duda_robot/build/duda_go
+
+//Value Computed by CMake
+duda_go_SOURCE_DIR:STATIC=/home/divye/dtusdc-zephyr/duda_robot/src/duda_go
+
+//Value Computed by CMake
+duda_vision_BINARY_DIR:STATIC=/home/divye/dtusdc-zephyr/duda_robot/build/duda_vision
+
+//Value Computed by CMake
+duda_vision_SOURCE_DIR:STATIC=/home/divye/dtusdc-zephyr/duda_robot/src/duda_vision
 
 //The directory containing a CMake configuration file for dynamic_reconfigure.
 dynamic_reconfigure_DIR:PATH=/opt/ros/melodic/share/dynamic_reconfigure/cmake
@@ -442,7 +457,7 @@ joint_limits_interface_DIR:PATH=/opt/ros/melodic/share/joint_limits_interface/cm
 laser_geometry_DIR:PATH=/opt/ros/melodic/share/laser_geometry/cmake
 
 //Path to a library.
-lib:FILEPATH=/opt/ros/melodic/lib/libtransmission_interface_loader_plugins.so
+lib:FILEPATH=/opt/ros/melodic/lib/libtf2.so
 
 //The directory containing a CMake configuration file for map_msgs.
 map_msgs_DIR:PATH=/opt/ros/melodic/share/map_msgs/cmake
@@ -507,6 +522,9 @@ rospack_DIR:PATH=/opt/ros/melodic/share/rospack/cmake
 //The directory containing a CMake configuration file for rospy.
 rospy_DIR:PATH=/opt/ros/melodic/share/rospy/cmake
 
+//The directory containing a CMake configuration file for rosserial_python.
+rosserial_python_DIR:PATH=/opt/ros/melodic/share/rosserial_python/cmake
+
 //The directory containing a CMake configuration file for rostime.
 rostime_DIR:PATH=/opt/ros/melodic/share/rostime/cmake
 
@@ -518,6 +536,9 @@ sensor_msgs_DIR:PATH=/opt/ros/melodic/share/sensor_msgs/cmake
 
 //The directory containing a CMake configuration file for smclib.
 smclib_DIR:PATH=/opt/ros/melodic/share/smclib/cmake
+
+//The directory containing a CMake configuration file for std_mgs.
+std_mgs_DIR:PATH=std_mgs_DIR-NOTFOUND
 
 //The directory containing a CMake configuration file for std_msgs.
 std_msgs_DIR:PATH=/opt/ros/melodic/share/std_msgs/cmake
@@ -668,7 +689,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=9
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

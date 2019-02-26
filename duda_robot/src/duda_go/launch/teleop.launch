@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<launch>
+    <!-- duda_teleop already has its own built in velocity smoother -->
+    <node pkg="duda_go" type="teleop.py" name="teleop" output="screen">
+
+        <!--    <remap from="arlobot_teleop_keyboard/cmd_vel" to="diffbot_controller/cmd_vel"/> -->
+        <!-- remap from="chefbot_teleop_keyboard/cmd_vel" to="cmd_vel_mux/input/teleop"/ -->
+    </node>
+</launch>
