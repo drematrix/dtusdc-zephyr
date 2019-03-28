@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import serial
 import datetime
 import time
@@ -5,7 +7,7 @@ import globalv
 import string
 import numpy
  
-serimu = globalv.serimu()
+serimu = serial.Serial('/dev/ttyUSB0',baudrate=115200)
 
 #Utility constants
 cmd_yaw = "yaw di.\r\n"

@@ -15,12 +15,13 @@ def imuPublisher():
     pub = rospy.Publisher('imu_data', Imu, queue_size=1)
     rospy.init_node('imu', anonymous=True)
     rate = rospy.Rate(100) # 100hz
+    seq = 0
     while not rospy.is_shutdown():
         imu_msg = Imu()
         # Orientation
-        imu_msg.orientation.x = radians(ahrs.roll())
-        imu_msg.orientation.y = radians(ahrs.pitch())
-        imu_msg.orientation.z = radians(ahrs.yaw())
+        imu_msg.orientation.x = (ahrs.roll())
+        imu_msg.orientation.y = (ahrs.pitch())
+        imu_msg.orientation.z = (ahrs.yaw())
         # Angular Velocity
         imu_msg.angular_velocity.x = 0
         imu_msg.angular_velocity.x = 0
